@@ -1,0 +1,666 @@
+/* =====================
+   CSS RESET & VARIABLES
+   ===================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --cream: #faf8f4;
+  --warm-white: #f5f2ec;
+  --sand: #e8e0d0;
+  --taupe: #b5a898;
+  --earth: #7a6a5a;
+  --deep: #2c2418;
+  --accent: #c8a97e;
+  --accent-light: #e8d4b8;
+  --text: #1e1810;
+  --text-muted: #4a3f35;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+  font-size: 18px;
+}
+
+/* =====================
+   NAVIGATION
+   ===================== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem 5vw;
+  background: rgba(250, 248, 244, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sand);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--deep);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--earth);
+  transition: color 0.25s;
+}
+
+.nav-links a:hover {
+  color: var(--deep);
+}
+
+/* =====================
+   HERO SECTION
+   ===================== */
+#home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 5vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 70% 40%, var(--accent-light) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 20% 80%, var(--sand) 0%, transparent 60%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  animation: fadeUp 1s ease both;
+}
+
+.hero-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--deep);
+  margin-bottom: 1.4rem;
+}
+
+.hero-name em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-tagline {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 2.8rem;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  background: var(--deep);
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.hero-cta:hover {
+  background: var(--earth);
+  transform: translateY(-2px);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 5vw;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.scroll-line {
+  width: 40px;
+  height: 1px;
+  background: var(--taupe);
+  animation: scrollPulse 2s ease infinite;
+}
+
+/* =====================
+   SHARED SECTION STYLES
+   ===================== */
+section {
+  padding: 7rem 5vw;
+}
+
+.section-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.7rem;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  color: var(--deep);
+  line-height: 1.2;
+  margin-bottom: 3.5rem;
+}
+
+/* =====================
+   ABOUT SECTION
+   ===================== */
+#about {
+  background: var(--warm-white);
+}
+
+/* Centered photo on top */
+.about-photo-center {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+
+.about-photo-frame {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--sand);
+  overflow: hidden;
+  position: relative;
+  border: 4px solid var(--accent-light);
+  box-shadow: 0 8px 32px rgba(44, 36, 24, 0.12);
+}
+
+.about-photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent-light) 0%, transparent 60%);
+  z-index: 1;
+  mix-blend-mode: multiply;
+  border-radius: 50%;
+}
+
+.about-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: var(--taupe);
+}
+
+.photo-placeholder svg {
+  opacity: 0.4;
+}
+
+.photo-placeholder span {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Two-column: description left, achievements right */
+.about-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-text .section-label,
+.about-achievements .section-label {
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--text);
+  font-weight: 400;
+  margin-bottom: 1.2rem;
+}
+
+.about-achievements {
+  border-left: 1.5px solid var(--sand);
+  padding-left: 3rem;
+}
+
+.achievement-placeholder {
+  padding: 1.2rem 1.5rem;
+  border: 1px dashed var(--sand);
+  color: var(--taupe);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  font-style: italic;
+}
+
+.achievement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: var(--cream);
+  border: 1px solid var(--sand);
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.achievement-item:hover {
+  box-shadow: 0 4px 16px rgba(44, 36, 24, 0.07);
+  transform: translateY(-2px);
+}
+
+.achievement-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.achievement-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--deep);
+}
+
+.achievement-sub {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 0.15rem;
+}
+
+/* =====================
+   MIDTERM TASKS SECTION
+   ===================== */
+#midterm {
+  background: var(--cream);
+}
+
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.task-card {
+  background: var(--warm-white);
+  border: 1px solid var(--sand);
+  padding: 2.2rem 2rem;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: default;
+}
+
+.task-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(44, 36, 24, 0.08);
+}
+
+.task-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: var(--accent-light);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.task-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.task-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--deep);
+  margin-bottom: 0.7rem;
+}
+
+.task-desc {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.7;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.task-github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.2rem;
+  background: var(--deep);
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.task-github-btn:hover {
+  background: var(--earth);
+  transform: translateY(-2px);
+}
+
+.task-github-btn svg {
+  flex-shrink: 0;
+}
+
+.task-corner {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  width: 28px;
+  height: 28px;
+  border-top: 1.5px solid var(--accent);
+  border-right: 1.5px solid var(--accent);
+}
+
+/* =====================
+   CONTACT SECTION
+   ===================== */
+#contact {
+  background: var(--deep);
+  color: var(--cream);
+}
+
+#contact .section-label {
+  color: var(--accent);
+}
+
+#contact .section-title {
+  color: var(--cream);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.contact-intro {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--taupe);
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-icon {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--earth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.contact-detail-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--earth);
+  margin-bottom: 0.2rem;
+}
+
+.contact-detail-value {
+  font-size: 0.95rem;
+  color: var(--cream);
+  font-weight: 300;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--earth);
+}
+
+.form-input,
+.form-textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--earth);
+  padding: 0.85rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  color: var(--cream);
+  outline: none;
+  transition: border-color 0.25s;
+  width: 100%;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--accent);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--earth);
+}
+
+.form-submit {
+  padding: 0.9rem 2rem;
+  background: var(--accent);
+  color: var(--deep);
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  align-self: flex-start;
+}
+
+.form-submit:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+/* =====================
+   FOOTER
+   ===================== */
+footer {
+  background: #1a140e;
+  padding: 1.8rem 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #3a2e20;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--taupe);
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--earth);
+  letter-spacing: 0.05em;
+}
+
+/* =====================
+   ANIMATIONS
+   ===================== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1.3);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================
+   RESPONSIVE
+   ===================== */
+@media (max-width: 900px) {
+  .about-bottom {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-achievements {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1.5px solid var(--sand);
+    padding-top: 2rem;
+  }
+
+  .tasks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hero-name {
+    font-size: 2.8rem;
+  }
+}
